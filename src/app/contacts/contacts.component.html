@@ -1,0 +1,20 @@
+<div class="box">
+  <!-- Récupération des données dans une boîte -->
+  <div class="card-grid">
+    <mat-card *ngFor="let contact of contactsDataArray" class="contact-card">
+      <mat-card-title>{{ contact.nom }} {{ contact.prenom }}</mat-card-title>
+      <mat-card-content>
+        <p>Nom : {{ contact.nom }}</p>
+        <p>Prénom : {{ contact.prenom }}</p>
+        <p>Adresse mail : {{ contact.adressemail }}</p>
+        <p>Entreprise : {{ contact.entreprise }}</p>
+        <p>Type de contact : {{ contact.typeContact }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button [routerLink]="['/details', contact.id]" mat-raised-button>
+          Voir détails
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

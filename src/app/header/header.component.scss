@@ -1,0 +1,31 @@
+.app-header {
+  background-color: #007acc;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 4px solid #005b99;
+  
+  h1 {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  .nav-bar {
+    margin-top: 0.5rem;
+
+    a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+
+      &.active {
+        text-decoration: underline;
+      }
+
+      &:hover {
+        color: #ffeeaa;
+      }
+    }
+  }
+}

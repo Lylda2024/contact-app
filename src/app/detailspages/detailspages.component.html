@@ -1,0 +1,105 @@
+<!-- Si un utilisateur est sélectionné, on affiche ses détails -->
+<div class="voir-details">
+  <h2>Détails de {{ contactDetail[0].prenom }} {{ contactDetail[0].nom }}</h2>
+
+  <table
+    class="mat-elevation-z8"
+    style="width: 100%; border-collapse: collapse; border: 1px solid #ccc"
+  >
+    <tr>
+      <td><strong>Nom :</strong></td>
+      <td>{{ contactDetail[0].nom }}</td>
+    </tr>
+    <tr>
+      <td><strong>Prénom :</strong></td>
+      <td>{{ contactDetail[0].prenom }}</td>
+    </tr>
+    <tr>
+      <td><strong>Adresse mail :</strong></td>
+      <td>{{ contactDetail[0].adressemail }}</td>
+    </tr>
+    <tr>
+      <td><strong>Entreprise :</strong></td>
+      <td>{{ contactDetail[0].entreprise }}</td>
+    </tr>
+    <tr>
+      <td><strong>Fonction :</strong></td>
+      <td>{{ contactDetail[0].fonction }}</td>
+    </tr>
+    <tr>
+      <td><strong>Date de naissance :</strong></td>
+      <td>{{ contactDetail[0].dateNaissance | date : "dd/MM/yyyy" }}</td>
+    </tr>
+    <tr>
+      <td><strong>Type de contact :</strong></td>
+      <td>{{ contactDetail[0].typeContact }}</td>
+    </tr>
+    <tr>
+      <td><strong>Notes :</strong></td>
+      <td>{{ contactDetail[0].notes }}</td>
+    </tr>
+    <tr>
+      <td><strong>Réseaux sociaux :</strong></td>
+      <td>{{ contactDetail[0].reseauxSociaux }}</td>
+    </tr>
+    <tr>
+      <td><strong>Favori :</strong></td>
+      <td>{{ contactDetail[0].favori ? "Oui" : "Non" }}</td>
+    </tr>
+    <tr>
+      <td><strong>Photo</strong></td>
+      <td>
+        <img
+          class="photo"
+          [src]="contactDetail[0].photo"
+          alt="Photo"
+          width="100"
+        />
+      </td>
+    </tr>
+  </table>
+
+  <div class="boutons" style="margin-top: 20px">
+    <button mat-raised-button routerLink="/">Retour</button>
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/modif/id
+    "
+    >
+      Modifier
+    </button>
+    <button
+      mat-raised-button
+      (click)="openDeleteDialog('0ms', '500ms')"
+      mat-raised-button
+      color="warn"
+    >
+      Supprimer
+    </button>
+    <!-- <button
+      mat-raised-button
+      (click)="deleteContact(contactDetail[0].id)"
+      mat-raised-button
+      color="warn"
+    >
+      Supprimer
+    </button> -->
+  </div>
+</div>
+
+<ng-template #deleteDialog>
+  <h2 mat-dialog-title>Suppression</h2>
+  <mat-dialog-content> Etes vous sur de vouloir supprimer </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Non</button>
+    <button
+      mat-button
+      mat-dialog-close
+      cdkFocusInitial
+      (click)="deleteContact(contactDetail[0].id)"
+    >
+      Oui
+    </button>
+  </mat-dialog-actions>
+</ng-template>

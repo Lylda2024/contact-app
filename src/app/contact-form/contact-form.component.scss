@@ -1,0 +1,139 @@
+*{
+  margin: 0;
+  box-sizing: border-box;}
+ h2{margin: 20px 0px;
+ justify-content: center;
+ text-align: center;
+ align-items: center;}
+  .container{
+   margin: auto;
+    box-shadow: lightgray 4px 4px 10px;
+    display: flex;
+    width: 750px;
+   min-height: 50vh;
+  
+  
+   input{
+     width: 300px;
+     height: 40px;
+      border: 1px dotted ;
+      display: flex;
+     
+     padding: 12px;
+     border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s;
+      
+     
+ 
+ 
+     
+    }
+ 
+  
+ }
+  .part-of-form,left-part-form {
+ 
+ 
+ 
+    display: flex;
+ padding: 30px;
+   gap: 45px;
+   margin: 20px 0px;
+ 
+  }
+  textarea{
+ 
+    width: 300px;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    outline: none;
+ 
+  }
+  .favori input{
+    width: 15px;
+   height: 15px;
+  display: inline;
+  margin: 20px 0;
+  
+   
+  }
+ .btn button{
+    width: 95px;
+    min-height: 40px;
+    background: linear-gradient(45deg,#dd1919,#d8caca);
+    border: none;
+    border-radius: 8px;
+    margin-left: 200px;
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    
+ 
+   
+ }
+ 
+ 
+  .image-form {
+    width: 65px;
+    height: 30px;
+    
+ 
+  }
+ 
+  .text-danger {
+   display: block;
+   margin-top: 4px;
+   color: #dc3545;
+   font-size: 0.9em;
+   position: relative;
+   padding-left: 24px;
+ 
+   &::before {
+     content: '!';
+     position: absolute;
+     left: 0;
+     width: 20px;
+     height: 20px;
+     background: #dc3545;
+     color: white;
+     border-radius: 50%;
+     text-align: center;
+     line-height: 20px;
+   }}
+ .selection{
+ 
+   height: 40px;
+   position: relative;
+   width: 300px;
+   padding: 12px;
+   border: 2px solid #e0e0e0;
+   border-radius: 8px;
+   transition: border-color 0.3s;
+ }
+ 
+ select {
+   /* Réinitialisation du style */
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+ }
+ 
+ /* Style des options */
+ option {
+   padding: 10px;
+   background: white;
+   color: #333;
+ }
+ 
+ /* Style au survol des options */
+ option:hover {
+   background: #f0f0f0;
+ }
+ 
+ .m-bottom{
+   margin-bottom: 10px;
+ }
+   

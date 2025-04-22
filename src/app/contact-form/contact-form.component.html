@@ -1,0 +1,305 @@
+<h2>CARNETS D'ADRESSES</h2>
+
+<div class="container">
+  <form [formGroup]="formGroup" (ngSubmit)="openAddDialog()">
+    <div class="part-of-form">
+      <div class="right-part-form">
+        <!-- Section Nom -->
+        <div class="m-bottom">
+          <label for="nom">Nom</label>
+          <input
+            type="text"
+            formControlName="nom"
+            id="nom "
+            required
+            [class.is-invalid]="
+              formGroup.get('nom')?.invalid &&
+              (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)
+            "
+          />
+          <small
+            class="text-danger"
+            *ngIf="formGroup.get('nom')?.errors?.['required'] && (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)"
+          >
+            Le nom est requis
+          </small>
+
+          <small
+            class="text-danger"
+            *ngIf="formGroup.get('nom')?.errors?.['minlength'] && (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)"
+          >
+            Minimum 2 caractères
+          </small>
+        </div>
+
+        <!-- Section Prénom -->
+        <div class="m-bottom">
+          <label for="prenom">Prénoms</label>
+          <input
+            type="text"
+            formControlName="prenom"
+            id="prenom"
+            required
+            [class.is-invalid]="
+              formGroup.get('prenom')?.invalid &&
+              (formGroup.get('prenom')?.touched ||
+                formGroup.get('prenom')?.dirty)
+            "
+          />
+          <small
+            class="text-danger"
+            *ngIf="formGroup.get('nom')?.errors?.['required'] && (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)"
+          >
+            Le prénom est requis
+          </small>
+
+          <small
+            class="text-danger"
+            *ngIf="formGroup.get('prenom')?.errors?.['minlength'] && (formGroup.get('prenom')?.touched || formGroup.get('prenom')?.dirty)"
+          >
+            Minimum 2 caractères
+          </small>
+        </div>
+
+        <!-- Section Téléphone -->
+        <div class="m-bottom">
+          <label for="tel">Téléphone</label>
+          <input type="tel" formControlName="tel" id="tel" required />
+          <div
+            *ngIf="
+              formGroup.get('tel')?.invalid &&
+              (formGroup.get('tel')?.dirty || formGroup.get('tel')?.touched)
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('tel')?.errors?.['required']"
+            >
+              Le téléphone est requis
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('tel')?.errors?.['pattern']"
+            >
+              Format invalide
+            </small>
+          </div>
+        </div>
+
+        <!-- Section Email -->
+        <div class="mb-bottom">
+          <label for="adressemail">Adresse email</label>
+          <input
+            type="email"
+            formControlName="adressemail"
+            id="adressemail"
+            required
+          />
+          <div
+            *ngIf="
+              formGroup.get('adressemail')?.invalid &&
+              (formGroup.get('adressemail')?.dirty ||
+                formGroup.get('adressemail')?.touched)
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('adressemail')?.errors?.['required']"
+            >
+              L'email est requis
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('adressemail')?.errors?.['email']"
+            >
+              Format email invalide
+            </small>
+          </div>
+        </div>
+
+        <!-- Section Adresse postale -->
+        <div class="m-bottom">
+          <label for="adresse-postale">Adresse postale</label>
+          <input
+            type="text"
+            formControlName="adressePostale"
+            id="adresse-postale "
+            required
+          />
+
+          <!-- Section Entreprise -->
+          <div class="m-bottom">
+            <label for="entreprise">Entreprise/Organisation</label>
+            <input
+              type="text"
+              formControlName="entreprise"
+              id="entreprise"
+              required
+              [class.is-invalid]="
+                formGroup.get('entreprise')?.invalid &&
+                (formGroup.get('entreprise')?.touched ||
+                  formGroup.get('entreprise')?.dirty)
+              "
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                formGroup.get('entreprise')?.invalid &&
+                (formGroup.get('entreprise')?.touched ||
+                  formGroup.get('entreprise')?.dirty)
+              "
+            >
+              Ce champ est requis
+            </small>
+
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('nom')?.errors?.['minlength'] && (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)"
+            >
+              Minimum 2 caractères
+            </small>
+          </div>
+        </div>
+
+        <!-- Section Fonction -->
+        <div class="m-bottom"></div>
+        <label for="fonction">Fonction/Poste</label>
+        <input type="text" formControlName="fonction" id="fonction" required />
+      </div>
+
+      <div class="left-part-form">
+        <!-- Section Date de naissance -->
+        <div class="m-bottom">
+          <label for="birth-date">Date de Naissance</label>
+          <input
+            type="date"
+            formControlName="dateNaissance"
+            id="birth-date"
+            required
+          />
+
+          <!-- Section Site web -->
+          <div class="m-bottom">
+            <label for="site-web">Site web</label>
+            <input
+              type="text"
+              formControlName="site"
+              id="site-web"
+              [class.is-invalid]="
+                formGroup.get('site')?.invalid &&
+                (formGroup.get('site')?.touched || formGroup.get('site')?.dirty)
+              "
+            />
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('site')?.errors?.['required']"
+            >
+              Le prénom est requis
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('site')?.errors?.['minlength']"
+            >
+              Minimum 2 caractères
+            </small>
+          </div>
+        </div>
+
+        <!-- Section Type de contact -->
+        <div class="m-bottom">
+          <label for="type-contact">Type de Contact</label>
+          <select
+            class="selection"
+            formControlName="typeContact"
+            id="type-contact"
+            required
+            [class.is-invalid]="
+              formGroup.get('typeContact')?.invalid &&
+              (formGroup.get('typeContact')?.touched ||
+                formGroup.get('typeContact')?.dirty)
+            "
+          >
+            <option value="">Sélectionnez un type</option>
+            <option value="ami">Ami</option>
+            <option value="famille">Famille</option>
+            <option value="professionnel">Professionnel</option>
+            <option value="autre">Autre</option>
+          </select>
+          <small
+            class="text-danger"
+            *ngIf="formGroup.get('typeContact')?.errors?.['required'] && formGroup.get('typeContact')?.touched"
+          >
+            Ce champ est obligatoire
+          </small>
+        </div>
+
+        <!-- Section Notes -->
+        <div class="m-bottom">
+          <br /><label for="note">Notes/Commentaires</label>
+          <textarea
+            formControlName="notes"
+            id="note"
+            rows="5"
+            placeholder="Ecrivez ici"
+          ></textarea>
+        </div>
+
+        <!-- Section Photo -->
+        <div class="m-bottom">
+          <div class="photo">
+            <br />
+            <label>Photo*</label>
+            <input
+              type="file"
+              formControlName="photo"
+              accept="image/*"
+              [class.is-invalid]="
+                isInvalidAndTouchedOrDirty(formGroup.controls.photo)
+              "
+            />
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('photo')?.errors?.['required'] && formGroup.get('photo')?.touched"
+            >
+              La photo est obligatoire
+            </small>
+          </div>
+        </div>
+
+        <!-- Section Réseaux sociaux -->
+        <div class="m-bottom">
+          <label for="reseaux">Réseaux sociaux</label>
+          <input type="text" formControlName="reseauxSociaux" id="reseaux" />
+        </div>
+
+        <!-- Section Favori -->
+        <div class="m-bottom">
+          <div class="favori">
+            <label>
+              <p><input type="checkbox" formControlName="favori" /> Favori</p>
+            </label>
+          </div>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <div class="m-bottom"></div>
+        <div class="btn">
+          <button type="submit">Envoyer</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ng-template #addDialog>
+  <h2 mat-dialog-title>Confirmation</h2>
+  <mat-dialog-content>
+    Etes vous sur de vouloir ajouter ce contact
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="onSubmit()">
+      Confirmer
+    </button>
+  </mat-dialog-actions>
+</ng-template>
