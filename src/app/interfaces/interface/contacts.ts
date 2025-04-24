@@ -11,7 +11,7 @@ export interface contacts {
   site?: string;
   typeContact: string;
   notes?: string;
-  photo?: string | null;
+  photo?: string | ArrayBuffer;
   reseauxSociaux?: string;
   favori?: boolean;
 }

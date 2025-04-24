@@ -1,7 +1,18 @@
 <div class="box">
   <!-- Récupération des données dans une boîte -->
+  <div class="search-bar">
+    <input
+      (input)="search($event)"
+      type="search"
+      name="search-bar"
+      id="search-bar"
+      placeholder=" 🔍  Rechercher un contact"
+    />
+  </div>
+
   <div class="card-grid">
-    <mat-card *ngFor="let contact of contactsDataArray" class="contact-card">
+    @for (contact of contactsDataArray; track contact.id ) {
+    <mat-card class="contact-card">
       <mat-card-title>{{ contact.nom }} {{ contact.prenom }}</mat-card-title>
       <mat-card-content>
         <p>Nom : {{ contact.nom }}</p>
@@ -16,5 +27,13 @@
         </button>
       </mat-card-actions>
     </mat-card>
+    } @empty{
+
+    <div class="txt">
+      <p>📒 Vous n'avez aucun contact pour l'instant</p>
+      <a routerLink="/contact-form"> ➕ Ajouter un nouveau contact</a>
+    </div>
+
+    }
   </div>
 </div>

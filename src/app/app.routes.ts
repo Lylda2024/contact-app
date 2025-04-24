@@ -12,5 +12,5 @@ export const routes: Routes = [
   { path: 'details/:id', component: DetailspagesComponent },
 
   { path: 'suppression/:id', component: SuppressionComponent },
-  { path: 'modif/:id', component: ModifComponent },
+  { path: 'modif/:id', component: ContactFormComponent },
 ];

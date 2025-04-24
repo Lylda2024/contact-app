@@ -10,14 +10,14 @@ export class ContactService {
       id: 1,
       nom: 'Kouadio',
       prenom: 'Jean',
-      tel: '+2250700000001',
+      tel: '0700000001',
       adressemail: 'jean.kouadio@example.com',
       adressePostale: 'Abidjan, Cocody',
       entreprise: 'Orange CI',
       fonction: 'Ingénieur réseau',
       dateNaissance: new Date('1990-05-15'),
       site: 'https://jeankouadio.dev',
-      typeContact: 'Professionnel',
+      typeContact: 'professionnel',
       notes: 'Très réactif par email.',
       photo: 'jean.jpg',
       reseauxSociaux: '@jeankouadio',
@@ -28,13 +28,13 @@ export class ContactService {
       id: 2,
       nom: 'Touré',
       prenom: 'Fatou',
-      tel: '+2250700000002',
+      tel: '0700000002',
       adressemail: 'fatou.toure@example.com',
       adressePostale: 'Yopougon, Sideci',
       entreprise: 'Banque Atlantique',
       fonction: 'Analyste financière',
       dateNaissance: new Date('1988-11-03'),
-      typeContact: 'Professionnel',
+      typeContact: 'professionnel',
       favori: false,
     },
 
@@ -42,14 +42,14 @@ export class ContactService {
       id: 3,
       nom: 'Koffi',
       prenom: 'Michel',
-      tel: '+2250700000003',
+      tel: '0700000003',
       adressemail: 'michel.koffi@example.com',
       adressePostale: 'Treichville, Rue 12',
       entreprise: 'Freelance',
       fonction: 'Développeur Web',
       dateNaissance: new Date('1995-07-22'),
       site: 'https://michelkoffi.tech',
-      typeContact: 'Personnel',
+      typeContact: 'ami',
       notes: 'Disponible en soirée.',
       reseauxSociaux: '@michelk_dev',
       favori: true,
@@ -59,13 +59,13 @@ export class ContactService {
       id: 4,
       nom: 'Bamba',
       prenom: 'Awa',
-      tel: '+2250700000004',
+      tel: '0700000004',
       adressemail: 'awa.bamba@example.com',
       adressePostale: 'Marcory, Résidentiel',
       entreprise: 'UNICEF',
       fonction: 'Chargée de projet',
       dateNaissance: new Date('1992-03-18'),
-      typeContact: 'Professionnel',
+      typeContact: 'professionnel',
       photo: 'awa.jpg',
       favori: false,
     },
@@ -78,9 +78,13 @@ export class ContactService {
   addContact(newContact: contacts): void {
     this.contacts.unshift(newContact);
   }
-
+  //Modification
   updateContact(updatedContact: contacts): void {
-    const index = this.contacts.findIndex((c) => c.id === updatedContact.id);
+    console.log('Contact update', updatedContact);
+
+    const index = this.contacts.findIndex((c) => c.id == updatedContact.id);
+    console.log('this.contacts[index]', index);
+
     if (index !== -1) {
       this.contacts[index] = updatedContact;
     }
@@ -95,5 +99,10 @@ export class ContactService {
 
   getContactById(id: number): contacts | undefined {
     return this.contacts.find((c) => c.id === id);
+  }
+  //Fontion pour la recherche de contacts
+  search(nom: string, prenom: string, email: string): contacts | undefined {
+    return this.contacts.find((c) => c.nom === nom);
+    return this.contacts.find((c) => c.prenom === prenom);
   }
 }

@@ -5,25 +5,39 @@ import { contacts } from '../interfaces/interface/contacts';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports:[CommonModule,RouterModule, MatCardModule, MatButtonModule,MatTableModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTableModule,
+  ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss',
 })
 export class ContactsComponent implements OnInit {
   //Déclaration d'une variable globale
   contactsDataArray: contacts[] = [];
+  contactnom: any;
+  contactprenom: any;
+  contactemail: any;
   //
   selectedUser: any;
   //Constructeur
-  constructor(private ContactService: ContactService) {}
+  constructor(
+    private ContactService: ContactService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
   //Initialisation des arguments
   ngOnInit(): void {
     //Méthode pour réccupérer les éléments du tableau
+
     this.contactsDataArray = this.ContactService.getContacts();
     console.log(this.contactsDataArray);
   }
@@ -31,14 +45,20 @@ export class ContactsComponent implements OnInit {
   voirDetails(user: any) {
     this.selectedUser = user;
   }
-
-  revenir() {
-    this.selectedUser = null;
+  //Recherche de contacts par le nom et l'id
+  search(event: any) {
+    console.log(event.target.value);
+    const searchValue = event.target.value.toLowerCase();
+    if (searchValue) {
+      this.contactsDataArray = this.ContactService.getContacts().filter(
+        (el) =>
+          el.nom.toLowerCase().includes(searchValue) ||
+          el.tel.includes(searchValue) ||
+          el.prenom.toLowerCase().includes(searchValue) ||
+          el.adressemail.toLowerCase().includes(searchValue)
+      );
+    } else {
+      this.contactsDataArray = this.ContactService.getContacts();
+    }
   }
-  hideDetails() {
-    this.selectedUser = null;
-  }
- 
-
-  
 }

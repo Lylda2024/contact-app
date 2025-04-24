@@ -7,11 +7,11 @@
  align-items: center;}
   .container{
    margin: auto;
-    box-shadow: lightgray 4px 4px 10px;
+   box-shadow:  0 10px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     width: 750px;
    min-height: 50vh;
-  
+   background:linear-gradient(to bottom, #f0f8ff, #f0f8ff);
   
    input{
      width: 300px;
@@ -33,7 +33,7 @@
  
   
  }
-  .part-of-form,left-part-form {
+  .part-of-form{
  
  
  
@@ -53,7 +53,7 @@
     outline: none;
  
   }
-  .favori input{
+  .checkbox input{
     width: 15px;
    height: 15px;
   display: inline;
@@ -62,18 +62,40 @@
    
   }
  .btn button{
-    width: 95px;
+  color: white;
+  background: #673ab7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
     min-height: 40px;
-    background: linear-gradient(45deg,#dd1919,#d8caca);
-    border: none;
-    border-radius: 8px;
-    margin-left: 200px;
-    color: rgb(255, 255, 255);
-    font-size: 1.1rem;
-    
- 
+   cursor: pointer;
+   transition: 0.3s;
+   font-size: 15px;
+
+   
    
  }
+
+ .btn2{
+  color: white;
+  background: #673ab7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+    min-height: 40px;
+   cursor: pointer;
+   transition: 0.3s;
+   margin-left: 100px;
+   font-size: 15px;
+
+
+ }
+
+ 
+ 
+ 
+ 
+
  
  
   .image-form {
@@ -135,5 +157,7 @@
  
  .m-bottom{
    margin-bottom: 10px;
+  display: inline;
+ 
  }
    

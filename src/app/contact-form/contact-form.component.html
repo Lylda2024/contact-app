@@ -48,7 +48,7 @@
           />
           <small
             class="text-danger"
-            *ngIf="formGroup.get('nom')?.errors?.['required'] && (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)"
+            *ngIf="formGroup.get('prenom')?.errors?.['required'] && (formGroup.get('prenom')?.touched || formGroup.get('nom')?.dirty)"
           >
             Le prénom est requis
           </small>
@@ -126,39 +126,39 @@
             id="adresse-postale "
             required
           />
+        </div>
 
-          <!-- Section Entreprise -->
-          <div class="m-bottom">
-            <label for="entreprise">Entreprise/Organisation</label>
-            <input
-              type="text"
-              formControlName="entreprise"
-              id="entreprise"
-              required
-              [class.is-invalid]="
-                formGroup.get('entreprise')?.invalid &&
-                (formGroup.get('entreprise')?.touched ||
-                  formGroup.get('entreprise')?.dirty)
-              "
-            />
-            <small
-              class="text-danger"
-              *ngIf="
-                formGroup.get('entreprise')?.invalid &&
-                (formGroup.get('entreprise')?.touched ||
-                  formGroup.get('entreprise')?.dirty)
-              "
-            >
-              Ce champ est requis
-            </small>
+        <!-- Section Entreprise -->
+        <div class="m-bottom">
+          <label for="entreprise">Entreprise/Organisation</label>
+          <input
+            type="text"
+            formControlName="entreprise"
+            id="entreprise"
+            required
+            [class.is-invalid]="
+              formGroup.get('entreprise')?.invalid &&
+              (formGroup.get('entreprise')?.touched ||
+                formGroup.get('entreprise')?.dirty)
+            "
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              formGroup.get('entreprise')?.invalid &&
+              (formGroup.get('entreprise')?.touched ||
+                formGroup.get('entreprise')?.dirty)
+            "
+          >
+            Ce champ est requis
+          </small>
 
-            <small
-              class="text-danger"
-              *ngIf="formGroup.get('nom')?.errors?.['minlength'] && (formGroup.get('nom')?.touched || formGroup.get('nom')?.dirty)"
-            >
-              Minimum 2 caractères
-            </small>
-          </div>
+          <small
+            class="text-danger"
+            *ngIf="formGroup.get('entreprise')?.errors?.['minlength'] && (formGroup.get('entreprise')?.touched || formGroup.get('entreprise')?.dirty)"
+          >
+            Minimum 2 caractères
+          </small>
         </div>
 
         <!-- Section Fonction -->
@@ -194,7 +194,7 @@
               class="text-danger"
               *ngIf="formGroup.get('site')?.errors?.['required']"
             >
-              Le prénom est requis
+              Le nom du site est requis
             </small>
             <small
               class="text-danger"
@@ -212,7 +212,6 @@
             class="selection"
             formControlName="typeContact"
             id="type-contact"
-            required
             [class.is-invalid]="
               formGroup.get('typeContact')?.invalid &&
               (formGroup.get('typeContact')?.touched ||
@@ -251,18 +250,19 @@
             <label>Photo*</label>
             <input
               type="file"
-              formControlName="photo"
               accept="image/*"
-              [class.is-invalid]="
-                isInvalidAndTouchedOrDirty(formGroup.controls.photo)
-              "
+              type="file"
+              (change)="onFileSelected($event)"
             />
-            <small
-              class="text-danger"
-              *ngIf="formGroup.get('photo')?.errors?.['required'] && formGroup.get('photo')?.touched"
-            >
-              La photo est obligatoire
-            </small>
+
+            <img
+              class="photo"
+              *ngIf="imageBase64"
+              [src]="imageBase64"
+              alt="Image preview"
+              width="50px"
+              height="50px"
+            />
           </div>
         </div>
 
@@ -274,7 +274,7 @@
 
         <!-- Section Favori -->
         <div class="m-bottom">
-          <div class="favori">
+          <div class="checkbox">
             <label>
               <p><input type="checkbox" formControlName="favori" /> Favori</p>
             </label>
@@ -282,9 +282,11 @@
         </div>
 
         <!-- Bouton de soumission -->
-        <div class="m-bottom"></div>
-        <div class="btn">
-          <button type="submit">Envoyer</button>
+        <div class="m-bottom">
+          <div class="btn">
+            <button type="submit">Envoyer</button>
+            <button class="btn2" routerLink="/contacts">Annuler</button>
+          </div>
         </div>
       </div>
     </div>

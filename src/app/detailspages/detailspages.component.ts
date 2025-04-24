@@ -64,11 +64,20 @@ export class DetailspagesComponent implements OnInit {
     console.log(this.contactDetail);
   }
 
+  //Modification
+  updateContact(updatedContact: contacts): void {
+    this.contactid = this.route.snapshot.paramMap.get('id');
+    this.contactService.updateContact(updatedContact);
+    this.contactDetail = this.contactsDataArray.filter(
+      (el) => el.id == this.contactid
+    );
+  }
   //suppression
   deleteContact(id: number): void {
     this.contactService.deleteContact(id);
     this.router.navigate(['/']);
   }
+  //Modification
 
   openDeleteDialog(
     enterAnimationDuration: string,
@@ -79,5 +88,24 @@ export class DetailspagesComponent implements OnInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  imageBase64: string | ArrayBuffer | null = null;
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    console.log('Fichier sélectionné :', file);
+    if (file) {
+      this.convertToBase64(file);
+    }
+  }
+
+  convertToBase64(file: File): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageBase64 = reader.result;
+      console.log(this.imageBase64);
+    };
+    reader.readAsDataURL(file); // Convertit le fichier en base64
   }
 }

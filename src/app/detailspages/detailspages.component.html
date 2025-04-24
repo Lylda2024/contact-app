@@ -47,13 +47,23 @@
       <td>{{ contactDetail[0].favori ? "Oui" : "Non" }}</td>
     </tr>
     <tr>
-      <td><strong>Photo</strong></td>
+      <td>
+        <strong>Photo</strong>
+        <img
+          *ngIf="imageBase64"
+          [src]="imageBase64"
+          alt="Aperçu de l'image"
+          width="200"
+        />
+      </td>
       <td>
         <img
           class="photo"
-          [src]="contactDetail[0].photo"
-          alt="Photo"
-          width="100"
+          *ngIf="imageBase64"
+          [src]="imageBase64"
+          alt="Image preview"
+          width="50px"
+          height="50px"
         />
       </td>
     </tr>
@@ -64,8 +74,7 @@
     <button
       mat-raised-button
       color="primary"
-      routerLink="/modif/id
-    "
+      [routerLink]="['/modif', contactDetail[0].id]"
     >
       Modifier
     </button>
@@ -79,7 +88,7 @@
     </button>
     <!-- <button
       mat-raised-button
-      (click)="deleteContact(contactDetail[0].id)"
+      (click)="deleteContact(contactDetail[0[routerLink]="['/details', contact.id]"id)"
       mat-raised-button
       color="warn"
     >
@@ -103,3 +112,5 @@
     </button>
   </mat-dialog-actions>
 </ng-template>
+
+<ng-template #updateDialog> </ng-template>
