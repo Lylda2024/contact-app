@@ -19,7 +19,7 @@ export class ContactService {
       site: 'https://jeankouadio.dev',
       typeContact: 'professionnel',
       notes: 'Très réactif par email.',
-      photo: 'jean.jpg',
+      photo: 'https://cdn-icons-png.freepik.com/512/5166/5166640.png',
       reseauxSociaux: '@jeankouadio',
       favori: true,
     },
@@ -35,6 +35,7 @@ export class ContactService {
       fonction: 'Analyste financière',
       dateNaissance: new Date('1988-11-03'),
       typeContact: 'professionnel',
+      photo: 'https://cdn-icons-png.freepik.com/512/5166/5166640.png',
       favori: false,
     },
 
@@ -52,6 +53,7 @@ export class ContactService {
       typeContact: 'ami',
       notes: 'Disponible en soirée.',
       reseauxSociaux: '@michelk_dev',
+      photo: 'https://cdn-icons-png.freepik.com/512/5166/5166640.png',
       favori: true,
     },
 
@@ -66,7 +68,7 @@ export class ContactService {
       fonction: 'Chargée de projet',
       dateNaissance: new Date('1992-03-18'),
       typeContact: 'professionnel',
-      photo: 'awa.jpg',
+      photo: 'https://cdn-icons-png.freepik.com/512/5166/5166640.png',
       favori: false,
     },
   ];

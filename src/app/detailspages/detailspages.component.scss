@@ -1,3 +1,7 @@
+.mb{
+  padding-bottom: 2rem;
+}
+
 .profil-carte {
   background: #ffffff;
   border-radius: 20px;
@@ -51,5 +55,6 @@
 .profil-actions {
   margin-top: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
 }

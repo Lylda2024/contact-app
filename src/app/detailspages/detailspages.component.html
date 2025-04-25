@@ -1,52 +1,67 @@
-<div class="profil-carte">
-  <div class="profil-header">
-    <img class="photo" [src]="contactDetail[0].photo || ''" alt="" />
-    <div class="profil-identite">
-      <h2>{{ contactDetail[0].prenom }} {{ contactDetail[0].nom }}</h2>
-      <p class="fonction">{{ contactDetail[0].fonction }}</p>
+<div class="mb">
+  <div class="profil-carte">
+    <div class="profil-header">
+      <img
+        class="photo"
+        [src]="
+          contactDetail[0].photo ??
+          'https://cdn-icons-png.freepik.com/512/5166/5166640.png'
+        "
+        alt=""
+      />
+      <div class="profil-identite">
+        <h2>{{ contactDetail[0].prenom }} {{ contactDetail[0].nom }}</h2>
+        <p class="fonction">{{ contactDetail[0].fonction }}</p>
+      </div>
     </div>
-  </div>
 
-  <div class="profil-infos">
-    <div class="info-box">
-      <strong>Bio :</strong> {{ contactDetail[0].notes }}
+    <div class="profil-infos">
+      <div class="info-box">
+        <strong>Bio :</strong> {{ contactDetail[0].notes }}
+      </div>
+      <div class="info-box">
+        <strong>Entreprise :</strong> {{ contactDetail[0].entreprise }}
+      </div>
+      <div class="info-box">
+        <strong>Date de naissance :</strong>
+        {{ contactDetail[0].dateNaissance | date : "dd/MM/yyyy" }}
+      </div>
+      <div class="info-box">
+        <strong>Email :</strong>
+        <a [href]="'mailto:' + contactDetail[0].adressemail">
+          {{ contactDetail[0].adressemail }}
+        </a>
+      </div>
+      <div class="info-box">
+        <strong>Téléphnone :</strong> {{ contactDetail[0].tel }}
+      </div>
+      <div class="info-box">
+        <strong>Type de contact :</strong> {{ contactDetail[0].typeContact }}
+      </div>
+      <div class="info-box">
+        <strong>Réseaux sociaux :</strong> {{ contactDetail[0].reseauxSociaux }}
+      </div>
+      <div class="info-box">
+        <strong>Favori :</strong> {{ contactDetail[0].favori ? "Oui" : "Non" }}
+      </div>
     </div>
-    <div class="info-box">
-      <strong>Entreprise :</strong> {{ contactDetail[0].entreprise }}
-    </div>
-    <div class="info-box">
-      <strong>Date de naissance :</strong>
-      {{ contactDetail[0].dateNaissance | date : "dd/MM/yyyy" }}
-    </div>
-    <div class="info-box">
-      <strong>Email :</strong> {{ contactDetail[0].adressemail }}
-    </div>
-    <div class="info-box">
-      <strong>Type de contact :</strong> {{ contactDetail[0].typeContact }}
-    </div>
-    <div class="info-box">
-      <strong>Réseaux sociaux :</strong> {{ contactDetail[0].reseauxSociaux }}
-    </div>
-    <div class="info-box">
-      <strong>Favori :</strong> {{ contactDetail[0].favori ? "Oui" : "Non" }}
-    </div>
-  </div>
 
-  <div class="profil-actions">
-    <button mat-raised-button routerLink="/">Retour</button>
-    <button
-      mat-raised-button
-      color="primary"
-      [routerLink]="['/modif', contactDetail[0].id]"
-    >
-      Modifier
-    </button>
-    <button
-      mat-raised-button
-      color="warn"
-      (click)="openDeleteDialog('0ms', '500ms')"
-    >
-      Supprimer
-    </button>
+    <div class="profil-actions">
+      <button mat-raised-button routerLink="/">Retour</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['/modif', contactDetail[0].id]"
+      >
+        Modifier
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="openDeleteDialog('0ms', '500ms')"
+      >
+        Supprimer
+      </button>
+    </div>
   </div>
 </div>
