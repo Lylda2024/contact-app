@@ -9,31 +9,15 @@ import { ContactService } from '../services/contacts.service';
 import { contacts } from '../interfaces/interface/contacts';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  MatDialog,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogModule,
-  MatDialogTitle,
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatDialogActions } from '@angular/material/dialog';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-detailspages',
   standalone: true,
-  imports: [
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-    MatDialogTitle,
-    MatDialogModule,
-    MatButtonModule,
-    RouterModule,
-    DatePipe,
-    CommonModule,
-  ],
+  imports: [MatDialogModule, MatButtonModule, RouterModule, CommonModule],
   templateUrl: './detailspages.component.html',
   styleUrl: './detailspages.component.scss',
 })

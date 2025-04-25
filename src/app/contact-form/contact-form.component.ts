@@ -51,6 +51,7 @@ export class ContactFormComponent implements OnInit {
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(10),
+      Validators.pattern('^[0-9]{10}$'), // uniquement 10 chiffres
     ]),
     adressemail: new FormControl('', [Validators.required, Validators.email]),
     adressePostale: new FormControl('', [
@@ -66,11 +67,11 @@ export class ContactFormComponent implements OnInit {
       Validators.minLength(2),
     ]),
     dateNaissance: new FormControl('', Validators.required),
-    site: new FormControl('', [Validators.minLength(3)]),
+    site: new FormControl('', [Validators.required, Validators.minLength(3)]),
     typeContact: new FormControl('', Validators.required),
-    notes: new FormControl('', Validators.required),
+    notes: new FormControl(''),
     photo: new FormControl('', Validators.required),
-    reseauxSociaux: new FormControl('', [Validators.required]),
+    reseauxSociaux: new FormControl(''),
     favori: new FormControl(false),
   });
 
@@ -208,10 +209,23 @@ export class ContactFormComponent implements OnInit {
   }
 
   convertToBase64(file: File): void {
+    // Vérification du type de fichier
+    if (!file.type.startsWith('image/')) {
+      Swal.fire('Erreur', 'Seules les images sont autorisées', 'error');
+      return;
+    }
+
+    // Vérification de la taille (max 2MB)
+    if (file.size > 2097152) {
+      Swal.fire('Erreur', 'La taille maximale autorisée est de 2MB', 'error');
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = () => {
-      this.imageBase64 = reader.result as string; // Stocke l'image en base64 dans la variable
+      this.imageBase64 = reader.result;
+      this.formGroup.get('photo')?.setValue(reader.result?.toString() || '');
     };
-    reader.readAsDataURL(file); // Convertit le fichier en base64
+    reader.readAsDataURL(file);
   }
 }

@@ -160,4 +160,62 @@
   display: inline;
  
  }
-   
+
+ /* Style du champ de fichier principal */
+input[type="file"] {
+  width: 300px;
+  padding: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  font-family: inherit;
+  color: #333;
+}
+
+/* Style du bouton "Parcourir" */
+input[type="file"]::file-selector-button {
+  background-color: #ffffff;
+  color: rgb(25, 18, 18);
+  border: none;
+ 
+  border-radius: 4px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+input[type="file"]::file-selector-button:hover {
+  background-color: #ddd7e7;
+  transform: translateY(-1px);
+}
+
+/* Style du texte de sélection */
+input[type="file"]::before {
+  content: "Parcourir...";
+  display: inline-block;
+  color: #666;
+}
+
+/* Style quand un fichier est sélectionné */
+input[type="file"]:valid::after {
+  content: "Fichier sélectionné";
+  color: #4CAF50;
+  margin-left: 10px;
+}
+
+/* Style quand vide */
+input[type="file"]:invalid::after {
+  content: "Aucun fichier sélectionné";
+  color: #999;
+}
+
+/* Style d'erreur */
+input[type="file"].is-invalid {
+  border-color: #dc3545;
+  background-image: url("data:image/svg+xml,%3csvg...");
+}
+
+ 

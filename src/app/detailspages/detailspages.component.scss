@@ -1,62 +1,55 @@
-.voir-details {
-    margin-top: 40px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    box-shadow: lightgray 3px 3px 7px;
-  }
-  
-  .voir-details table {
-    width: 50%; 
-    margin: 0 auto; 
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-  }
-  
-  .voir-details td {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-  }
-  
-  .voir-details tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-
-.boutons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-    padding: 20px;
+.profil-carte {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+ 
 }
-table {
-    width: 400px; 
-    margin: 0 auto; 
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-  }
-  td {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-  }
-  voir-details tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  .photo {
-    width: 100%;
-    height: auto;
-    border-radius: 50%; /* Image circulaire */
-    margin-bottom: 10px;
-  }
-  
-  /* Responsive pour petits écrans */
-  @media screen and (max-width: 768px) {
-    .card-grid {
-      flex-direction: column;
-      align-items: center;
-    }}
-    button {
-      margin-right: 8px;
-    }
-    
+
+.profil-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.profil-header .photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+  background-color: #ddd;
+}
+
+.profil-identite h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.profil-identite .fonction {
+  color: #777;
+  margin-top: 5px;
+}
+
+.profil-infos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.info-box {
+  background: #f0f4ff;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.profil-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}

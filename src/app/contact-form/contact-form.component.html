@@ -64,7 +64,16 @@
         <!-- Section Téléphone -->
         <div class="m-bottom">
           <label for="tel">Téléphone</label>
-          <input type="tel" formControlName="tel" id="tel" required />
+          <input
+            type="tel"
+            formControlName="tel"
+            id="tel"
+            required
+            [class.is-invalid]="
+              formGroup.get('tel')?.invalid &&
+              (formGroup.get('tel')?.touched || formGroup.get('tel')?.dirty)
+            "
+          />
           <div
             *ngIf="
               formGroup.get('tel')?.invalid &&
@@ -79,9 +88,15 @@
             </small>
             <small
               class="text-danger"
+              *ngIf="formGroup.get('tel')?.errors?.['minlength'] || formGroup.get('tel')?.errors?.['maxlength']"
+            >
+              Le numéro doit contenir exactement 10 chiffres
+            </small>
+            <small
+              class="text-danger"
               *ngIf="formGroup.get('tel')?.errors?.['pattern']"
             >
-              Format invalide
+              Le format du numéro est invalide
             </small>
           </div>
         </div>
@@ -192,13 +207,13 @@
             />
             <small
               class="text-danger"
-              *ngIf="formGroup.get('site')?.errors?.['required']"
+              *ngIf="formGroup.get('site')?.errors?.['required'] && formGroup.get('typeContact')?.touched "
             >
               Le nom du site est requis
             </small>
             <small
               class="text-danger"
-              *ngIf="formGroup.get('site')?.errors?.['minlength']"
+              *ngIf="formGroup.get('site')?.errors?.['minlength'] "
             >
               Minimum 2 caractères
             </small>
@@ -240,7 +255,8 @@
             id="note"
             rows="5"
             placeholder="Ecrivez ici"
-          ></textarea>
+          >
+          </textarea>
         </div>
 
         <!-- Section Photo -->
@@ -251,17 +267,26 @@
             <input
               type="file"
               accept="image/*"
-              type="file"
               (change)="onFileSelected($event)"
+              [class.is-invalid]="
+                formGroup.get('photo')?.invalid &&
+                (formGroup.get('photo')?.touched ||
+                  formGroup.get('photo')?.dirty)
+              "
             />
+            <small
+              class="text-danger"
+              *ngIf="formGroup.get('photo')?.errors?.['required'] && formGroup.get('photo')?.touched"
+            >
+              La photo est obligatoire
+            </small>
 
             <img
               class="photo"
               *ngIf="imageBase64"
               [src]="imageBase64"
               alt="Image preview"
-              width="50px"
-              height="50px"
+              style="width: 50px; height: 50px"
             />
           </div>
         </div>
